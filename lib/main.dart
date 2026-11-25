@@ -6,18 +6,18 @@ import 'core/app_colors.dart';
 import 'core/sistema_state.dart';
 
 // Pages
-import 'pages/pagina_cadastro.dart';
-import 'pages/pagina_coordenador.dart';
-import 'pages/pagina_cronograma.dart';
-import 'pages/pagina_cursos.dart';
-import 'pages/pagina_dashboard.dart';
-import 'pages/pagina_login.dart';
-import 'pages/pagina_mapa_salas.dart';
-import 'pages/pagina_recessos.dart';
-import 'pages/pagina_resetar_senha.dart';
-import 'pages/pagina_salas.dart';
-import 'pages/pagina_unidades.dart';
-import 'pages/pagina_usuarios_adm.dart';
+import 'pages/autenticacao/pagina_cadastro.dart';
+import 'pages/dashboard/pagina_coordenador.dart';
+import 'pages/cronograma/pagina_cronograma.dart';
+import 'pages/cursos/pagina_cursos.dart';
+import 'pages/dashboard/pagina_dashboard.dart';
+import 'pages/autenticacao/pagina_login.dart';
+import 'pages/mapas/pagina_mapa_salas.dart';
+import 'pages/recessos/pagina_recessos.dart';
+import 'pages/usuarios/pagina_resetar_senha.dart';
+import 'pages/salas/pagina_salas.dart';
+import 'pages/unidades/pagina_unidades.dart';
+import 'pages/usuarios/pagina_usuarios_adm.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

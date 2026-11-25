@@ -1,11 +1,11 @@
 import 'package:bcrypt/bcrypt.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../core/app_colors.dart';
-import '../core/sistema_state.dart';
-import '../core/supabase_config.dart';
-import '../widgets/banner_alerta.dart';
-import '../widgets/formatters.dart';
+import '../../core/app_colors.dart';
+import '../../core/sistema_state.dart';
+import '../../core/supabase_config.dart';
+import '../../widgets/banner_alerta.dart';
+import '../../widgets/formatters.dart';
 
 class PaginaCadastro extends StatefulWidget {
   final Function(String) onNavegar;

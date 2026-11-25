@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../core/sistema_state.dart';
-import '../widgets/card_painel.dart';
-import '../widgets/shell_layout.dart';
+import '../../core/sistema_state.dart';
+import '../../widgets/card_painel.dart';
+import '../../widgets/shell_layout.dart';
 
 class PaginaRecessos extends StatefulWidget {
   final Function(String) onNavegar;

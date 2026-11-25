@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../core/app_colors.dart';
-import '../core/sistema_state.dart';
-import '../widgets/banner_alerta.dart';
+import '../../core/app_colors.dart';
+import '../../core/sistema_state.dart';
+import '../../widgets/banner_alerta.dart';
 
 class PaginaLogin extends StatefulWidget {
   final Function(String) onNavegar;

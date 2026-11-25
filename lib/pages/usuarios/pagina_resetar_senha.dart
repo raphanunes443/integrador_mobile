@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../core/app_colors.dart';
-import '../core/sistema_state.dart';
-import '../widgets/banner_alerta.dart';
-import '../widgets/card_painel.dart';
-import '../widgets/shell_layout.dart';
+import '../../core/app_colors.dart';
+import '../../core/sistema_state.dart';
+import '../../widgets/banner_alerta.dart';
+import '../../widgets/card_painel.dart';
+import '../../widgets/shell_layout.dart';
 
 class PaginaResetarSenha extends StatefulWidget {
   final Function(String) onNavegar;
