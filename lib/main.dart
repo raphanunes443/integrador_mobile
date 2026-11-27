@@ -22,8 +22,8 @@ import 'pages/usuarios/pagina_usuarios_adm.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Supabase.initialize(
-    url: 'https://aiyahroofixqkdxwhtjh.supabase.co',
-    anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFpeWFocm9vZml4cWtkeHdodGpoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTU0MjU1MjksImV4cCI6MjExMTAwMTUyOX0.TWasy1zqRi5a24-XHBOtZeJLfGiww9umLm3eSGPSoXk',
+    url: 'https://zjcgawddxfxbbhtqjkof.supabase.co',
+    anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpqY2dhd2RkeGZ4YmJodHFqa29mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTU3NzA4NjksImV4cCI6MjExMTM0Njg2OX0.FMeMFm6r8yPgpGc15TMQNRdWybH_Q4WHb6Lruoh9xd0',
   );
   runApp(const GerenciadorAmbientesApp());
 }
