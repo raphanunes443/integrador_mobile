@@ -17,6 +17,7 @@ class PaginaLogin extends StatefulWidget {
 }
 
 class _PaginaLoginState extends State<PaginaLogin> {
+
   // ==========================================================
   // CONTROLADORES E VARIÁVEIS
   // ==========================================================
@@ -83,6 +84,7 @@ class _PaginaLoginState extends State<PaginaLogin> {
   // ==========================================================
 
   Future<void> _entrar() async {
+
     // Impede múltiplas solicitações simultâneas.
     if (_carregando) return;
 
@@ -107,6 +109,8 @@ class _PaginaLoginState extends State<PaginaLogin> {
     });
 
     try {
+
+      // Realiza a autenticação pelo SistemaState.
       final resultado = await state.login(
         email,
         senha,
@@ -114,6 +118,7 @@ class _PaginaLoginState extends State<PaginaLogin> {
 
       if (!mounted) return;
 
+      // Verifica se ocorreu algum erro.
       if (resultado != null) {
         setState(() {
           _erro = resultado;
@@ -129,6 +134,7 @@ class _PaginaLoginState extends State<PaginaLogin> {
       widget.onNavegar('/dashboard');
 
     } catch (_) {
+
       if (!mounted) return;
 
       setState(() {
@@ -138,6 +144,7 @@ class _PaginaLoginState extends State<PaginaLogin> {
       });
 
     } finally {
+
       if (mounted) {
         setState(() {
           _carregando = false;
@@ -156,9 +163,11 @@ class _PaginaLoginState extends State<PaginaLogin> {
     bool erro = false,
     Widget? sufixo,
   }) {
+
     const corErro = Color(0xFFE53935);
 
     return InputDecoration(
+
       hintText: placeholder,
 
       hintStyle: const TextStyle(
@@ -187,6 +196,7 @@ class _PaginaLoginState extends State<PaginaLogin> {
 
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
+
         borderSide: BorderSide(
           color: erro ? corErro : AppColors.border,
         ),
@@ -194,6 +204,7 @@ class _PaginaLoginState extends State<PaginaLogin> {
 
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
+
         borderSide: BorderSide(
           color: erro ? corErro : AppColors.primary,
           width: 2,
@@ -202,6 +213,7 @@ class _PaginaLoginState extends State<PaginaLogin> {
 
       disabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
+
         borderSide: const BorderSide(
           color: AppColors.border,
         ),
@@ -209,6 +221,7 @@ class _PaginaLoginState extends State<PaginaLogin> {
 
       errorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
+
         borderSide: const BorderSide(
           color: corErro,
         ),
@@ -216,6 +229,7 @@ class _PaginaLoginState extends State<PaginaLogin> {
 
       focusedErrorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(12),
+
         borderSide: const BorderSide(
           color: corErro,
           width: 2,
@@ -236,8 +250,10 @@ class _PaginaLoginState extends State<PaginaLogin> {
   // ==========================================================
 
   Widget _buildCabecalho() {
+
     return const Column(
       children: [
+
         Icon(
           Icons.meeting_room_outlined,
           size: 52,
@@ -249,6 +265,7 @@ class _PaginaLoginState extends State<PaginaLogin> {
         Text(
           'Gerenciador de Salas',
           textAlign: TextAlign.center,
+
           style: TextStyle(
             fontSize: 26,
             fontWeight: FontWeight.w700,
@@ -261,6 +278,7 @@ class _PaginaLoginState extends State<PaginaLogin> {
         Text(
           'Gerenciamento de Ambientes',
           textAlign: TextAlign.center,
+
           style: TextStyle(
             fontSize: 14,
             color: AppColors.textMuted,
@@ -275,11 +293,15 @@ class _PaginaLoginState extends State<PaginaLogin> {
   // ==========================================================
 
   Widget _buildCampoEmail() {
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
+
       children: [
+
         const Text(
           'E-mail',
+
           style: TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.w600,
@@ -290,14 +312,19 @@ class _PaginaLoginState extends State<PaginaLogin> {
         const SizedBox(height: 8),
 
         TextFormField(
+
           controller: _emailCtrl,
+
           enabled: !_carregando,
 
           keyboardType: TextInputType.emailAddress,
+
           textInputAction: TextInputAction.next,
+
           textCapitalization: TextCapitalization.none,
 
           autocorrect: false,
+
           enableSuggestions: false,
 
           autofillHints: const [
@@ -330,11 +357,15 @@ class _PaginaLoginState extends State<PaginaLogin> {
   // ==========================================================
 
   Widget _buildCampoSenha() {
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
+
       children: [
+
         const Text(
           'Senha',
+
           style: TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.w600,
@@ -345,16 +376,21 @@ class _PaginaLoginState extends State<PaginaLogin> {
         const SizedBox(height: 8),
 
         TextFormField(
+
           controller: _senhaCtrl,
+
           focusNode: _senhaFocus,
+
           enabled: !_carregando,
 
           obscureText: !_mostrarSenha,
 
           keyboardType: TextInputType.visiblePassword,
+
           textInputAction: TextInputAction.done,
 
           autocorrect: false,
+
           enableSuggestions: false,
 
           autofillHints: const [
@@ -371,21 +407,27 @@ class _PaginaLoginState extends State<PaginaLogin> {
           onChanged: (_) => _limparErro(),
 
           decoration: _decoracaoCampo(
+
             placeholder: 'Digite sua senha',
+
             icone: Icons.lock_outline,
+
             erro: _erroSenha,
 
             sufixo: IconButton(
+
               tooltip: _mostrarSenha
                   ? 'Ocultar senha'
                   : 'Mostrar senha',
 
               icon: Icon(
+
                 _mostrarSenha
                     ? Icons.visibility_off_outlined
                     : Icons.visibility_outlined,
 
                 color: AppColors.textMuted,
+
                 size: 20,
               ),
 
@@ -408,15 +450,23 @@ class _PaginaLoginState extends State<PaginaLogin> {
   // ==========================================================
 
   Widget _buildBotaoEntrar() {
+
     return SizedBox(
+
       width: double.infinity,
+
       height: 50,
 
       child: ElevatedButton(
-        onPressed: _carregando ? null : _entrar,
+
+        onPressed: _carregando
+            ? null
+            : _entrar,
 
         style: ElevatedButton.styleFrom(
+
           backgroundColor: AppColors.primary,
+
           foregroundColor: Colors.white,
 
           disabledBackgroundColor:
@@ -435,9 +485,12 @@ class _PaginaLoginState extends State<PaginaLogin> {
         ),
 
         child: _carregando
+
             ? const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
+
                 children: [
+
                   SizedBox(
                     width: 18,
                     height: 18,
@@ -452,6 +505,7 @@ class _PaginaLoginState extends State<PaginaLogin> {
 
                   Text(
                     'Entrando...',
+
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
@@ -462,6 +516,7 @@ class _PaginaLoginState extends State<PaginaLogin> {
 
             : const Text(
                 'Entrar',
+
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
@@ -476,14 +531,20 @@ class _PaginaLoginState extends State<PaginaLogin> {
   // ==========================================================
 
   Widget _buildCadastro() {
+
     return Wrap(
+
       alignment: WrapAlignment.center,
+
       crossAxisAlignment: WrapCrossAlignment.center,
+
       spacing: 4,
 
       children: [
+
         const Text(
           'Não tem uma conta?',
+
           style: TextStyle(
             color: AppColors.textMuted,
             fontSize: 14,
@@ -491,11 +552,13 @@ class _PaginaLoginState extends State<PaginaLogin> {
         ),
 
         TextButton(
+
           onPressed: _carregando
               ? null
               : () => widget.onNavegar('/cadastro'),
 
           style: TextButton.styleFrom(
+
             foregroundColor: AppColors.primary,
 
             padding: const EdgeInsets.symmetric(
@@ -506,6 +569,7 @@ class _PaginaLoginState extends State<PaginaLogin> {
 
           child: const Text(
             'Cadastre-se gratuitamente',
+
             style: TextStyle(
               fontWeight: FontWeight.w600,
               fontSize: 14,
@@ -521,8 +585,11 @@ class _PaginaLoginState extends State<PaginaLogin> {
   // ==========================================================
 
   Widget _buildRodape() {
+
     return const Column(
+
       children: [
+
         Divider(
           color: AppColors.border,
           thickness: 1,
@@ -531,9 +598,11 @@ class _PaginaLoginState extends State<PaginaLogin> {
         SizedBox(height: 12),
 
         Row(
+
           mainAxisAlignment: MainAxisAlignment.center,
 
           children: [
+
             Icon(
               Icons.shield_outlined,
               size: 16,
@@ -545,6 +614,7 @@ class _PaginaLoginState extends State<PaginaLogin> {
             Flexible(
               child: Text(
                 'Sistema protegido. Apenas usuários autorizados.',
+
                 textAlign: TextAlign.center,
 
                 style: TextStyle(
@@ -565,6 +635,7 @@ class _PaginaLoginState extends State<PaginaLogin> {
 
   @override
   void dispose() {
+
     _emailCtrl.dispose();
     _senhaCtrl.dispose();
     _senhaFocus.dispose();
@@ -578,18 +649,25 @@ class _PaginaLoginState extends State<PaginaLogin> {
 
   @override
   Widget build(BuildContext context) {
+
     final larguraTela = MediaQuery.of(context).size.width;
+
     final telaPequena = larguraTela < 400;
 
     return Scaffold(
+
       backgroundColor: AppColors.bgMain,
 
       body: SafeArea(
+
         child: Center(
+
           child: SingleChildScrollView(
+
             padding: const EdgeInsets.all(20),
 
             child: Container(
+
               width: double.infinity,
 
               constraints: const BoxConstraints(
@@ -602,11 +680,13 @@ class _PaginaLoginState extends State<PaginaLogin> {
               ),
 
               decoration: BoxDecoration(
+
                 color: Colors.white,
 
                 borderRadius: BorderRadius.circular(24),
 
                 boxShadow: [
+
                   BoxShadow(
                     color: Colors.black.withOpacity(0.08),
                     blurRadius: 30,
@@ -616,23 +696,28 @@ class _PaginaLoginState extends State<PaginaLogin> {
               ),
 
               child: AutofillGroup(
+
                 child: Form(
+
                   key: _formKey,
 
                   child: Column(
+
                     mainAxisSize: MainAxisSize.min,
 
                     crossAxisAlignment:
                         CrossAxisAlignment.stretch,
 
                     children: [
+
                       // Cabeçalho.
                       _buildCabecalho(),
 
                       const SizedBox(height: 28),
 
-                      // Mensagem de erro.
+                      // Mensagens de erro.
                       if (_erro != null) ...[
+
                         BannerAlerta(
                           texto: _erro!,
                         ),
@@ -640,8 +725,9 @@ class _PaginaLoginState extends State<PaginaLogin> {
                         const SizedBox(height: 16),
                       ],
 
-                      // Mensagem do sistema.
+                      // Mensagens do sistema.
                       if (state.flashMsg != null) ...[
+
                         BannerAlerta(
                           texto: state.flashMsg!,
                           sucesso: state.flashOk,
